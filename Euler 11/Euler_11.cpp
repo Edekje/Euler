@@ -1,5 +1,6 @@
 #include <iostream>
 #include <stdlib.h>
+#include <cstring>
 
 using namespace std;
 
@@ -24,12 +25,12 @@ int main()
 04 42 16 73 38 25 39 11 24 94 72 18 08 46 29 32 40 62 76 36\n\
 20 69 36 41 72 30 23 88 34 62 99 69 82 67 59 85 74 04 36 16\n\
 20 73 35 29 78 31 90 01 74 31 49 71 48 86 81 16 23 57 05 54\n\
-01 70 54 71 83 51 54 69 16 92 33 48 61 43 52 01 99 99 99 99\n"; // Take raw str
+01 70 54 71 83 51 54 69 16 92 33 48 61 43 52 01 89 19 67 48\n"; // Take raw str
 	
 	
 	int maparray[20][20];	//convert to array
 	int counter = 0;
-	char two[2];
+	string two;
 	
 	for(int i = 0; i < 20; i++)
 	{
@@ -37,12 +38,12 @@ int main()
 		{
 			two[0] = map[counter];
 			two[1] = map[counter+1];
-			maparray[i][j] = atoi(two);
+			maparray[i][j] = atoi(two.c_str());
 			counter += 3;
 		}
 	}
 	
-	for(int i = 0; i < 20; i++)
+	for(int i = 0; i < 20; i++) // output
 	{
 		for(int j = 0; j <20; j++)
 		{
@@ -63,13 +64,51 @@ int main()
 			{
 				cout << maparray[i][j+3] << endl;
 				greatestproduct = maparray[i][j]*(maparray[i][j+1])*(maparray[i][j+2])*(maparray[i][j+3]);
-				
+			}
+		}
+	}
+	
+	// search vertical products
+	for(int j = 0; j < 20; j++)
+	{
+		for(int i = 0; i < 17; i++)
+		{
+			if(maparray[i][j]*(maparray[i+1][j])*(maparray[i+2][j])*(maparray[i+3][j]) > greatestproduct)
+			{
+				cout << maparray[i+3][j] << endl;
+				greatestproduct = maparray[i][j]*(maparray[i+1][j])*(maparray[i+2][j])*(maparray[i+3][j]);
+			}
+		}
+	}
+	
+	// search diagonal l-r products
+	for(int i = 16; i >= 0; i--)
+	{
+		for(int j = 0; j < 17; j++)
+		{
+			if(maparray[i][j]*(maparray[i+1][j+1])*(maparray[i+2][j+2])*(maparray[i+3][j+3]) > greatestproduct)
+			{
+				cout << maparray[i+3][j+3] << endl;
+				greatestproduct = maparray[i][j]*(maparray[i+1][j+1])*(maparray[i+2][j+2])*(maparray[i+3][j+3]);
+			}
+		}
+	}
+	
+	// search diagonal l-r products
+	for(int i = 16; i >= 0; i--)
+	{
+		for(int j = 3; j < 20; j++)
+		{
+			if(maparray[i][j]*(maparray[i+1][j-1])*(maparray[i+2][j-2])*(maparray[i+3][j-3]) > greatestproduct)
+			{
+				cout << maparray[i+3][j-3] << endl;
+				greatestproduct = maparray[i][j]*(maparray[i+1][j-1])*(maparray[i+2][j-2])*(maparray[i+3][j-3]);
 			}
 		}
 	}
 	
 	cout << greatestproduct << endl;
-	cin >> map[0];
+	cin >> map[0]; // Pause till end
 	
 	return 0;
 }
