@@ -62,7 +62,7 @@ int main()
 		{
 			if(maparray[i][j]*(maparray[i][j+1])*(maparray[i][j+2])*(maparray[i][j+3]) > greatestproduct)
 			{
-				cout << maparray[i][j+3] << endl;
+				cout << maparray[i][j+3] << endl; // prints last numeral
 				greatestproduct = maparray[i][j]*(maparray[i][j+1])*(maparray[i][j+2])*(maparray[i][j+3]);
 			}
 		}
