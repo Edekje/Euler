@@ -1,0 +1,1 @@
+I didn't do it in C++: to lazy to support giga-ints or what ever haha, Python does though!

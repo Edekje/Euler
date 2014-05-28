@@ -1,0 +1,3 @@
+Dit is niet NP-hard voor grafen bomen.
+
+Werk van beneden naar boven en stel dan de vraag: welke van deze twee is groter, om de buur te zijn van die hierboven tel dan de waarden op van de gewonnen buur bij die die gewonnen is. Die krijgt die nieuwe waarde? Zeer snel op te lossen.
